@@ -2,9 +2,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class Converter {
+    Numbers numbers;
+
     public static String arabicToRoman(int number) {
         if ((number <= 0) || (number > 4000)) {
-            throw new IllegalArgumentException(number + " is not in range (0,4000]");
+            throw new IllegalArgumentException(number + " в римской системе нет отрицательных чисел, \n" +
+                    "ответ вне диапазона (0,4000]");
         }
 
         List romanNumerals = Numbers.getReverseSortedValues();
@@ -24,6 +27,7 @@ public class Converter {
 
         return sb.toString();
     }
+
     public static int romanToArabic(String input) {
         String romanNumeral = input.toUpperCase();
         int result = 0;
@@ -43,14 +47,22 @@ public class Converter {
         }
 
         if (romanNumeral.length() > 0) {
-            throw new IllegalArgumentException(input + " cannot be converted to a Roman Numeral");
+            throw new IllegalArgumentException(input);
         }
 
         return result;
     }
-    public boolean isRoman(String number){
-        //"V"->'V'
-        return Numbers.getReverseSortedValues().containsAll(Collections.singleton(number.charAt(0)));
+
+    public boolean isRoman(String number) {
+
+        try {
+            //для римских чисел
+            return Numbers.getReverseSortedValues().containsAll(Collections.singleton(numbers.valueOf(number)));
+        } catch (IllegalArgumentException e) {
+            //для арабских чисел
+            return Numbers.getReverseSortedValues().containsAll(Collections.singleton(number));
+        }
+
     }
 
 }

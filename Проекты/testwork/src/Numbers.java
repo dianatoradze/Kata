@@ -23,5 +23,6 @@ public enum Numbers {
                 .sorted(Comparator.comparing((Numbers e) -> e.value).reversed())
                 .collect(Collectors.toList());
     }
+
 }
 
