@@ -57,10 +57,10 @@ public class Converter {
 
         try {
             //для римских чисел
-            return Numbers.getReverseSortedValues().containsAll(Collections.singleton(numbers.valueOf(number)));
+            return Numbers.getReverseSortedValues().contains(Numbers.valueOf(number));
         } catch (IllegalArgumentException e) {
             //для арабских чисел
-            return Numbers.getReverseSortedValues().containsAll(Collections.singleton(number));
+            return Numbers.getReverseSortedValues().contains(number);
         }
 
     }

@@ -4,6 +4,7 @@ public class Main {
     public static boolean inPeriod = false;
 
     public static void main(String[] args) {
+
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите выражение без пробелов: ");
         String inputUser = scanner.nextLine();
@@ -40,7 +41,7 @@ public class Main {
             if (converter.isRoman(data[0]) == converter.isRoman(data[1])) {
 
                 //конвертируем арабские числа из строки в число
-                boolean isRoman = converter.isRoman(data[0]);
+                boolean isRoman = converter.isRoman((data[0]));
 
                 if (isRoman) {
                     //если римские, то конвертируем их в арабские
